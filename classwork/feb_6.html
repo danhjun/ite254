@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title></title>
+
+<style type="text/css">
+
+body {
+    background-image: url( "http://newton.ncc.edu/gansonj/ite154/img/birds.jpg" );
+    font-family: arial;
+    color: yellow;
+    text-align: center;
+}
+
+#mainwrap {
+    border: 10px darkred solid;
+    border-radius: 25px;
+    padding: 20px;
+    background-image: url( "http://newton.ncc.edu/gansonj/ite154/img/lines.jpg");
+    width: 700px;
+    margin: 30px auto 0px auto;
+}
+
+#maintitle {
+    color: white;
+    border-bottom: 6px red double;
+
+}
+
+.formfield {
+    background-color: gray;
+    color: blue;
+    padding: 5px;
+    border: 3px purple double;
+    width: 250px;
+}
+
+.spacer {
+    margin-top: 20px;
+}
+
+#formbutton {
+    background-color: yellow;
+    color: purple;
+    border: 3px red solid;
+    padding: 5px;
+}
+
+#formbutton:hover {
+    background-color: purple;
+    color: yellow;
+    border: 3px orange solid;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+    <div id="mainwrap">
+
+        <div id="maintitle">Send us a comment</div>
+        <form>
+            <div class="spacer">Enter your email</div>
+            <div><input type="text" class="formfield"></div>
+            <div class="spacer">Select your state</div>
+            <div>
+                <select class="formfield">
+                    <option>New York</option>
+                    <option>Florida</option>
+                    <option>Michigan</option>
+                    <option>Wyoming</option>
+                </select>
+            </div>
+
+            <div class ="spacer">Enter your comment</div>
+            <div>
+                <textarea class="formfield" rows="5"></textarea>
+            </div>
+
+            <div class="spacer">
+                <input type="button" value="Send Comment" id="formbutton">
+            </div>
+
+        </form>
+
+    </div>
+</body>
+
+</html>
