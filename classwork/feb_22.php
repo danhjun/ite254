@@ -58,7 +58,7 @@ body {
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 	
         <div class="formtext">Enter phone number</div>
-        <div><input type=text" class="formfield" name="phone"></div>
+        <div><input type=text class="formfield" name="phone"></div>
 
         <div class="formtext">Select phone carrier</div>
         <div>
