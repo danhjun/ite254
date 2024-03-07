@@ -107,8 +107,7 @@
             
             // End of footer style div -- Unable to change color of text
             echo "<div style='font-family: Verdana;'>Custom paint order for " . $name . "</div>\n";
-            echo '<div>You have chosen the color ' . $color . "</div>\n";    
-            $price = $gallons * 10 + 15;
+			echo '<div style="color: ' . $color . ';">You have chosen the color ' . $color . "</div>\n";            $price = $gallons * 10 + 15;
             echo '<div>Total cost is $' . $price .  "</div>\n";
         }
         ?>
