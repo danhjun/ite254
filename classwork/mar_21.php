@@ -75,6 +75,9 @@ body {
 	<?php	
         if ( isset( $_POST['gamename'])) {
 
+			error_reporting(E_ALL);
+			ini_set('display_errors','On');
+			// require_once("../pw/.htpasswd");
             $db = mysqli_connect( "localhost", "jun0785", "jun0785", "jun0785");
 
             $query = "SELECT * FROM inventory WHERE title LIKE '" . $_POST['gamename'] . "%' ORDER BY title";
@@ -110,6 +113,10 @@ body {
 	?>
 		
 </div> <!-- ends div#contentwrap -->
+		<div>
+
+
+		</div>
 
 </body>
 </html>
