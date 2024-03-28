@@ -2,6 +2,7 @@
 // turn error reporting on, comment out when finished
 error_reporting(E_ALL);
 ini_set('display_errors','On');
+require_once("../pw/.htpasswd");
 ?>
 
 <html>
@@ -74,12 +75,6 @@ body {
 	<!-- PHP code to process form goes here -->
 	<?php	
         if ( isset( $_POST['gamename'])) {
-
-			error_reporting(E_ALL);
-			ini_set('display_errors','On');
-			// require_once("../pw/.htpasswd");
-            $db = mysqli_connect( "localhost", "jun0785", "jun0785", "jun0785");
-
             $query = "SELECT * FROM inventory WHERE title LIKE '" . $_POST['gamename'] . "%' ORDER BY title";
 
             $results = mysqli_query( $db, $query )
@@ -99,17 +94,8 @@ body {
                 }   
             }
 
-
-
-
-
-
-
-
         }
 
-	
-		
 	?>
 		
 </div> <!-- ends div#contentwrap -->
