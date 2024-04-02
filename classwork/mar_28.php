@@ -101,14 +101,14 @@ body {
 			$conresults = mysqli_query( $db, $conquery )
 				or die( "Error getting consoles -> ". mysqli_error( $db ) );
 			
-			for( $i = 0; $i < mysqli_num_rows( $conresults ); $i++ ) {
-		
-				$con_data = mysqli_fetch_array( $conresults );
-			
-				echo "<option value='". $con_data['id'] ."'>";
+			while($con_data = mysqli_fetch_array( $conresults )) {
+				$selected = "";
+				if ($con_data['id'] == $selectedConsole) {
+					$selected = "selected";
+				}
+				echo "<option value='". $con_data['id'] ."' $selected>";
 				echo $con_data['company'] ." ". $con_data['console_name'];
 				echo "</option>\n";
-			
 			}
 			?>
 			
