@@ -1,16 +1,10 @@
 <?php
+
 // turn error reporting on, comment out when finished
 error_reporting(E_ALL);
 ini_set('display_errors','On');
 
 require_once( "../pw/.htpasswd" );
-
-// Initialize variable to store selected console ID
-$selectedConsole = "";
-
-if (isset($_POST['conid'])) {
-    $selectedConsole = $_POST['conid'];
-}
 
 ?>
 
@@ -79,7 +73,7 @@ body {
 	color: red;
 	font-size: 1.5em;
 }
-</style>
+ </style>
  
 </head>
 <body>
@@ -92,7 +86,7 @@ body {
 	
 	<div class="spacer">Select a console</div>
 	<div>
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 			
 			<select id="menu" class="spacer" name="conid">
 			<?php
@@ -101,15 +95,22 @@ body {
 			$conresults = mysqli_query( $db, $conquery )
 				or die( "Error getting consoles -> ". mysqli_error( $db ) );
 			
-			while($con_data = mysqli_fetch_array( $conresults )) {
-				$selected = "";
-				if ($con_data['id'] == $selectedConsole) {
-					$selected = "selected";
+			for( $i = 0; $i < mysqli_num_rows( $conresults ); $i++ ) {
+			
+				$con_data = mysqli_fetch_array( $conresults );
+			
+				echo "<option value='". $con_data['id'] ."'";
+
+				if( isset( $_POST['conid'] )) {
+					if( $_POST['conid'] == $con_data['id'] ) {
+						echo " selected";
+					}
 				}
-				echo "<option value='". $con_data['id'] ."' $selected>";
+				echo ">";
 				echo $con_data['company'] ." ". $con_data['console_name'];
 				echo "</option>\n";
-			}
+			
+			} // ends FOR loop
 			?>
 			
 			</select>
@@ -119,17 +120,44 @@ body {
 			</div>
 			
 		</form>
+
 		<?php
-		if(isset($_POST['conid'])) {
-			$inventoryquery = "select * from inventory inner join consoles ON inventory.console_id = consoles.id where console_id = ". $_POST['conid'];
-			$inventoryresults = mysqli_query( $db, $inventoryquery )
-				or die( "Error getting inventory -> ". mysqli_error( $db ) );
-			for( $i = 0; $i < mysqli_num_rows( $inventoryresults ); $i++ ) {
-				$inventory_data = mysqli_fetch_array( $inventoryresults );
-				echo "<div class='spacer'>". $inventory_data['title'] ."</div>";
+		
+		if( isset( $_POST['conid'] ) ) {
+		
+			$game_query = "select * from inventory where console_id=". $_POST['conid'];
+			
+			$game_results = mysqli_query( $db, $game_query )
+				or die( "Error getting games -> ". mysqli_error( $db ) );
+		
+			if( mysqli_num_rows( $game_results ) == 0 ) {
+				
+				// no matching games
+				echo "<div id='nogames'>Sorry, no games for the selected console!!</div>\n";
+				
 			}
+			else {
+				
+				// we have matching games
+				// need a loop
+				for( $i = 0; $i < mysqli_num_rows( $game_results ); $i++ ) {
+					
+					$game_data = mysqli_fetch_array( $game_results );
+					
+					echo "<div>". $game_data['title'] ."</div>\n";
+					
+					
+				} // ends FOR loop
+				
+			}
+		
+		
+		
+		
 		}
 		?>
+		
+
 	</div>
 
 	</div>
