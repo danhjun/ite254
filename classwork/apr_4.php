@@ -120,7 +120,7 @@ $(document).ready( function() {
                     echo "<td>"; // button cell
 
 					// delete form with javascript
-					echo "form class='delform' method='post' action=' " . $_SERVER['PHP_SELF'] . " '>\n";
+					echo "<form class='delform' method='post' action=' " . $_SERVER['PHP_SELF'] . " '>\n";
 
 					echo "<form action=' " . $_SERVER['PHP_SELF'] . " ' method='post'>\n";
 					echo "<input type='submit'; value='Delete game'>\n";
