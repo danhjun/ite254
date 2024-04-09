@@ -71,7 +71,9 @@ tr:nth-child(odd) {
 <script type="text/javascript">
 $(document).ready( function() {
 
-
+	$(".delform").submit( function() {
+		return confirm("Are you sure you want to delete this game?");
+	} );
 
 } );
 </script>
@@ -116,6 +118,9 @@ $(document).ready( function() {
                     echo "<td>" . $row['quantity'] . "</td>\n";
 
                     echo "<td>"; // button cell
+
+					// delete form with javascript
+					echo "form class='delform' method='post' action=' " . $_SERVER['PHP_SELF'] . " '>\n";
 
 					echo "<form action=' " . $_SERVER['PHP_SELF'] . " ' method='post'>\n";
 					echo "<input type='submit'; value='Delete game'>\n";
