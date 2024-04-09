@@ -65,13 +65,14 @@ body {
 		$result = mysqli_query($db, $roster_query)
             or die("An error occured -> " . mysqli_error($db));
 
-		
+		// mysqli_num_rows() Returns the number of rows in the result set. 
         if ( mysqli_num_rows($result) == 0 ) {
 			echo "<div>No students found</div>";
 		} else {
 			// Printing the amount of students found in search
 			echo "<div class='spacer'>Students found in search: " . mysqli_num_rows($result) . "</div>";
 			for ($i = 0; $i < mysqli_num_rows($result); $i++) {
+				// mysqli_fetch_array()Fetches one row of data from the result set and returns it as an array
 				$row = mysqli_fetch_array($result);
 				// Printing the name of each student
 				echo "<div>Student name: " . $row['name'] . "</div>\n";
