@@ -86,7 +86,10 @@ $(document).ready( function() {
 <div id="contentwrap">
 
 	<div id="heading">Video Game Inventory Management Page</div>
-	
+
+	<!-- <div> <a href = "https://stargate.ncc.edu/~gansonj/add-new-game.php">Add a game to the inventory</a> </div> -->
+	<div> <a href = "https://stargate.ncc.edu/~jun0785/apr_11.php">Add a game to the inventory</a> </div>
+
 	<div> <!-- table goes here -->
 	
         <table border="3" bordercolor="red" width="100%">
