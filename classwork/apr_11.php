@@ -1,19 +1,18 @@
 <?php
 
-require_once ("../pw/.htpasswd");
-if ( isset( $_POST['title'])) {
+require_once("../pw/.htpasswd");
+if (isset($_POST['title'])) {
 
-    $ins_query = "INSERT INTO inventory values (NULL,";
+    $ins_query = "INSERT INTO inventory VALUES (NULL,";
     $ins_query .= "'" . $_POST['title'] . "',";
     $ins_query .= "'" . $_POST['genre'] . "',";
     $ins_query .= "'" . $_POST['quantity'] . "',";
     $ins_query .= "'" . $_POST['price'] . "',";
-    $ins_query .= "'" . $_POST['console_id'] . "',";
-    $ins_query .= "'" . $_POST['score'] . "')";
+    $ins_query .= "'" . $_POST['console_id'] . "',"; 
+    $ins_query .= "'" . $_POST['rating'] . "')";
 
-    
-    mysqli_query( $db, $ins_query )
-        or die("An error occured -> " . mysqli_error($db));
+    mysqli_query($db, $ins_query)
+        or die("An error occurred -> " . mysqli_error($db));
 
     echo "<script type='text/javascript'>\n";
     echo "window.location='apr_4.php';\n";
@@ -21,6 +20,7 @@ if ( isset( $_POST['title'])) {
 }
 
 ?>
+
 
 <?php
 
