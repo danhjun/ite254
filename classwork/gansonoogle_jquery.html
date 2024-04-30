@@ -1,0 +1,111 @@
+<html>
+<head>
+<title></title>
+
+<style type="text/css">
+
+body {
+	background: #FFFFFF;
+	font-family: arial;
+}
+
+#contentwrap {
+	width: 600px;
+	margin: 75px auto 0px auto;
+	background: #FFFFFF;
+}
+
+#imgwrap, #formwrap {
+	text-align: center;
+	margin-bottom: 8px;
+}
+
+#gamename {
+	width: 500px;
+	padding: 6px;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+#output {
+	margin-top: 20px;
+	padding-left: 55px;
+}
+
+.error {
+	color: red;
+}
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+// Example of code for Exam 3!!!
+$("document").ready( function() {
+    $("#gamename").on("keyup", function() {
+
+        var gamename = $("#gamename").val();
+
+        if ( gamename == "") {
+            $("#output").html("");
+            return;
+        }
+
+        $.ajax({
+            // gansonoogle_ajax.php needs to be in same directory as gansonoogle_jquery.html!!
+            url: "gansonoogle_ajax.php",
+            type: "POST",
+            data: "gamename=" + gamename,
+            success: function(msg) {
+                $("#output").html(msg);
+                // .addClass() function adds the called class to the element
+                if ( msg == "error") {
+                    // .stop(true,true) function stops the current animation and clears the queue
+                    $("#output").addClass("error").stop(true,true).hide().html("No games found").stop(true,true).show("pulsate", 2000);
+                }
+                else{
+                // .removeClass() function removes the called class from the element
+                    $("#output").removeClass("error").hide().html(msg).show("slide");
+                }
+            } // ends success code
+
+
+        }); // ends ajax call
+
+    }); // ends keyup event
+
+});  //ends document.ready code
+
+</script>
+
+
+
+</head>
+<body>
+
+<div id="contentwrap">
+	
+	<div id="imgwrap">
+		<img src="http://newton.ncc.edu/gansonj/ite254/img/gansonoogle.png" />
+	</div>
+	
+	<div id="formwrap">
+	
+		<!-- form goes here -->
+		<form>
+			
+			<input type="text" id="gamename">
+		
+		</form>
+	
+	</div>
+	
+	<div id="output"></div>
+
+</div> <!-- ends div#contentwrap -->
+
+</body>
+</html>
