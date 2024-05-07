@@ -1,0 +1,142 @@
+<html>
+<head>
+
+<title>ITE254 Exam #3</title>
+
+<style type="text/css">
+
+body {
+	color: white;
+	font-family: arial;
+	text-align: center;
+	font-weight: bold;
+	background-image: url("http://newton.ncc.edu/gansonj/ite254/img/stars.jpg");
+}
+
+#contentwrap {
+	width: 600px;
+	min-height: 400px;
+	margin: 20px auto 20px auto;
+	border: 2px orange solid;
+	border-radius: 15px;
+	background-image: url("http://newton.ncc.edu/gansonj/ite254/img/nebula.jpg");
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#formwrap {
+	background: lightyellow;
+	color: darkblue;
+	margin: 30px;
+	font-size: 1em;
+	padding: 10px;
+	border-radius: 15px;
+	border: 4px solid darkblue;
+	opacity:0.8;
+}
+
+#titlewrap {
+	color: darkred;
+	margin-bottom: 20px;
+	font-size: 1.75em;
+}
+
+#output {
+	background: lightblue;
+	color: darkred;
+	padding: 10px;
+	border-radius: 15px;
+	border: 4px solid darkred;
+	opacity: 1.0;
+	font-size: .95em;
+}
+
+input {
+	font-weight: bold;
+	font-size: 1em;
+	padding: 2px 5px 2px 5px;
+	border: 1px solid darkred;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+
+	$("#loginform").on( "submit", function() {
+
+		// setting variable values from user input
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        $.ajax({
+            url: "login_ajax.php",
+            type: "POST",
+            // if more than one data field is needed, use brackets {}
+            // and make sure post variables (left side in "") is set to same values as shown in login_ajax.php
+            data: {"un": username, "pw": password},
+			// if returned msg value is "yes" (set in login_ajax.php), return success message
+            success: function(msg) {
+                $("#output").html(msg);
+                if ( msg == "yes") {
+                    $("#output").html("<div style='color:green;'>Successful Login!</div>");
+                }
+                else{
+                    $("#output").html("<div style='color:red;'>Wrong Username/Password</div>");
+                }
+            } // ends success code
+
+
+        }); // ends ajax call
+	
+		
+		
+		
+	} ); // ends submit handler	
+
+} ); // document.ready
+
+</script>
+
+</head>
+<body>
+
+<div id="contentwrap">
+
+	<div id="formwrap">
+	
+		<div id="titlewrap">
+			Please login<p />
+			USERNAME: final<br />
+			PASSWORD: exam<br />
+		</div>
+
+		<form id="loginform" action="javascript:void(0);">
+		
+			Enter Username<br />
+			<input type="text" size="20" id="username">
+			<p />
+
+			Enter Password<br />
+			<input type="text" size="20" id="password">
+			<p />
+
+			<input type="submit" value="Login">
+			
+		</form>
+		
+		<div id="resultswrap">
+		
+			<div id="output"></div>
+		
+		</div>
+
+	</div> <!-- closes formwrap div -->
+
+</div> <!-- closes pagewrap div -->
+
+</body>
+</html>
