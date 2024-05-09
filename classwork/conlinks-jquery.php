@@ -92,7 +92,7 @@ $("document").ready( function() {
             type: "POST",
             data: "conid=" + conid,
             success: function( data ) {
-                $("#output").html( data );
+                $("#output").stop(true, true).hide().html( data ).stop(true, true).show("fade");
             }
         });
         
