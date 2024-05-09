@@ -127,7 +127,7 @@ $("document").ready( function() {
         for( $i= 0; $i < mysqli_num_rows( $conresults ); $i++ ) {
             
             $con_data = mysqli_fetch_array( $conresults );
-            // adding con to id to make it unique
+            // adding con to id to make it unique - id's shouldn't just be numbers! - Ganson
             echo "<a href='javascript:void(0);' class='conlinks' id='con". $con_data['id'] . "'>";
             echo $con_data["company"] ." ". $con_data["console_name"];
             echo "</a>";
