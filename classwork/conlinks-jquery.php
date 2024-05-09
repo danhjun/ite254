@@ -84,7 +84,7 @@ $("document").ready( function() {
 
     $(".conlinks").on( "click", function() {
 
-        // get the id of the console .substring(3) removes the con from the id
+        // get the id of the console starting at the 3rd character
         var conid = $(this).attr("id").substring(3);
 
         $.ajax({
