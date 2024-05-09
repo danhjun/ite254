@@ -100,7 +100,7 @@ $("document").ready( function() {
     });
 	
 	
-} ); // ends document.ready code
+}); // ends document.ready code
 
 </script>
 
